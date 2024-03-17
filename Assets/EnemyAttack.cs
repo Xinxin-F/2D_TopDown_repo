@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     
-    public GameObject player;
+    // public GameObject player;
+    public Transform target;
     public float EneSpeed = 2.5f;
 
     private float distanceBet;
@@ -20,22 +21,55 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        distanceBet = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
+        if(!target){
+            getTarget();
+        }
+        else{
+            moveTowardsTaget();
+
+        }
+        // distanceBet = Vector2.Distance(transform.position, player.transform.position);
+        // Vector2 direction = player.transform.position - transform.position;
 
         // direction.Normalize();
         // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
         // if (distanceBet < DistanceRange){
             // // move towards player
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, EneSpeed * Time.deltaTime);
+            //transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, EneSpeed * Time.deltaTime);
 
             // transform.LookAt( player.transform.position, Vector2.up );
             // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         // }
 
+
+
+    
+
     }
+
+    private void moveTowardsTaget(){
+
+        transform.position = Vector2.MoveTowards(this.transform.position, 
+        target.position, EneSpeed * Time.deltaTime);
+    }
+
+    private void getTarget(){
+        if(GameObject.FindGameObjectWithTag("Player")){
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        
+    }
+
+    // use for non-trigger
+    private void onCollisionEnter2D(Collision2D other){
+        if(other.gameObject.CompareTag("Bullet")){
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
+
 
     
 }

@@ -17,6 +17,9 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootingAlignment;
 
+    [SerializeField] private float RangedAttackCool = 0.5f;
+    private float rangedAttrackTimer;
+
 
     private void Start()
     {
@@ -34,9 +37,18 @@ public class PlayerMovements : MonoBehaviour
         rb.velocity = new Vector2(dirX * moveSpeed, dirY * moveSpeed);
 
         UpdateAnimationState();
-        rotateWithMouse(shootingAlignment);
+        //rotateWithMouse(shootingAlignment);
+        ShootingRotateWithMouse();
 
-
+        // if left key is pressed, range attack
+        if(Input.GetMouseButtonDown(0) && rangedAttrackTimer <= 0f){
+            RangedAttack();
+            rangedAttrackTimer = RangedAttackCool; //reset timer every time shoot
+        }
+        else{
+            rangedAttrackTimer -= Time.deltaTime;
+        }
+        
     }
 
 
@@ -59,14 +71,26 @@ public class PlayerMovements : MonoBehaviour
     }
 
     //rotate with position
-    private void rotateWithMouse(Transform t){
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float angle = Mathf.Atan2(mousePos.y - t.position.y, 
-            mousePos.x - t.position.x) * Mathf.Rad2Deg - 90f;
+    // private void RotateWithMouse(){
+    //     mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //     float angle = Mathf.Atan2(mousePos.y - transform.position.y, 
+    //         mousePos.x - transform.position.x) * Mathf.Rad2Deg - 90f;
         
-        t.localRotation = Quaternion.Euler(0, 0, angle);
+    //     transform.localRotation = Quaternion.Euler(0, 0, angle);
+    // }
+
+    // Shooting alignment rotate with mouse direction, but this is not rotate around player
+    private void ShootingRotateWithMouse(){
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float angle = Mathf.Atan2(mousePos.y - shootingAlignment.position.y, 
+            mousePos.x - shootingAlignment.position.x) * Mathf.Rad2Deg - 90f;
+        
+        shootingAlignment.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    private void RangedAttack(){
+        Instantiate(bulletPrefab, shootingAlignment.position, shootingAlignment.rotation);
+    }
 
     
 }
