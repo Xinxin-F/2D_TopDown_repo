@@ -42,10 +42,6 @@ public class EnemyAttack : MonoBehaviour
             // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         // }
 
-
-
-    
-
     }
 
     private void moveTowardsTaget(){
@@ -62,12 +58,12 @@ public class EnemyAttack : MonoBehaviour
     }
 
     // use for non-trigger
-    private void onCollisionEnter2D(Collision2D other){
-        if(other.gameObject.CompareTag("Bullet")){
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
-    }
+    // private void onCollisionEnter2D(Collision2D other){
+    //     if(other.gameObject.CompareTag("Bullet")){
+    //         Destroy(other.gameObject);
+    //         Destroy(gameObject);
+    //     }
+    // }
 
 
 
