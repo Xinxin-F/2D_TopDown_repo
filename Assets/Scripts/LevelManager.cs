@@ -32,7 +32,11 @@ public class LevelManager : MonoBehaviour
 
     public void IncreaseScore(int amount){
         score += amount;
+        GameObject.FindObjectOfType<ScoreUI>().UpdateScore();
     }
+
+
+
 
 }
 // [System.Serializable] public class SaveData{

@@ -11,8 +11,12 @@ public class ScoreUI : MonoBehaviour
         scoreText = GetComponent<TMP_Text>();
     }
 
-    public void UpdateScore(ScoreController scoreController){
-        scoreText.text = $"Score: {scoreController.Score}";
+    // public void UpdateScore(ScoreController scoreController){
+    //     scoreText.text = $"Score:{scoreController.Score}";
+    // }
+
+    public void UpdateScore(){
+        scoreText.text = $"Score:{LevelManager.manager.score}";
     }
 
 }

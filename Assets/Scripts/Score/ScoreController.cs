@@ -13,5 +13,7 @@ public class ScoreController : MonoBehaviour
         OnScoreChanged.Invoke();
       //   Debug.Log("ScoreAdded");
    }
+
+   
     
 }
