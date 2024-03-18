@@ -63,6 +63,17 @@ public class PlayerMovements : MonoBehaviour
     //     transform.localRotation = Quaternion.Euler(0, 0, angle);
     // }
 
+    private void onCollisionEnter2D(Collision2D other){
+        
+        // for testing Lose Menu UI
+        if(other.gameObject.CompareTag("Enemy")){
+            LevelManager.manager.GameOver();
+            Destroy(gameObject);
+            
+
+        }
+    }
+
 
 
     

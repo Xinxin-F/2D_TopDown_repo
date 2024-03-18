@@ -24,10 +24,6 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.up * speed; //fly straight away
     }
 
-    // destroy when hit enemy
-
-
-
     private void OnTriggerEnter2D(Collider2D other){
 
         if(other.gameObject.CompareTag("Enemy")){
@@ -37,7 +33,5 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    
 
 }

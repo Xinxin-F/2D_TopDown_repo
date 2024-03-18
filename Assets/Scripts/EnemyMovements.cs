@@ -77,6 +77,17 @@ public class EnemyMovements : MonoBehaviour
     //         Debug.Log("Enemy Died");
     //     }
 
+    // private void onCollisionEnter2D(Collision2D other){
+        
+    //     // for testing Lose Menu UI
+    //     if(other.gameObject.CompareTag("Player")){
+    //         LevelManager.manager.GameOver();
+    //         Destroy(other.gameObject);
+
+
+    //     }
+    // }
+
     
 
 
