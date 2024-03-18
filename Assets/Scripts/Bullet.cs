@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed = 2f;
 
     [Range(1, 10)]
-    [SerializeField] private float lifetime = 3f; //die after 3 seconds
+    //[SerializeField] private float lifetime = 3f; //die after 3 seconds
 
     private Rigidbody2D rb;
     [SerializeField] private float RangeDamage = 1f;
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, lifetime); 
+        //Destroy(gameObject, lifetime); 
     }
 
     private void FixedUpdate()
@@ -29,9 +29,14 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy")){
             // Destroy(other.gameObject); //kill enemy in one bullet
             // Debug.Log("Attack Enemy");
+            // LevelManager.manager.IncreaseScore(MeleeEnemyScore); 
             other.GetComponent<HealthController>().TakeDamage(RangeDamage);
+            Destroy(gameObject); //destroy itself once hit 
+        }
+        else if (other.gameObject.CompareTag("Wall")){
             Destroy(gameObject);
         }
     }
+
 
 }

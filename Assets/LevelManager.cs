@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public GameObject deatheScreen;
 
     public int score;
-    public TextMeshProGUI scoreText;
+    public TextMeshProUGUI scoreText;
 
     private void Awake(){
         manager = this;
