@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifetime = 3f; //die after 3 seconds
 
     private Rigidbody2D rb;
+    [SerializeField] private float RangeDamage = 1f;
 
     private void Start()
     {
@@ -21,15 +22,18 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = transform.up * speed; //fly straight away
-
     }
 
     // destroy when hit enemy
 
+
+
     private void OnTriggerEnter2D(Collider2D other){
 
         if(other.gameObject.CompareTag("Enemy")){
-            Destroy(other.gameObject);
+            // Destroy(other.gameObject); //kill enemy in one bullet
+            // Debug.Log("Attack Enemy");
+            other.GetComponent<HealthController>().TakeDamage(RangeDamage);
             Destroy(gameObject);
         }
     }

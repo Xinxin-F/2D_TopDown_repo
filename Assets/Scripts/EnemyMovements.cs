@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyMovements : MonoBehaviour
 {
     
     // public GameObject player;
@@ -11,6 +11,9 @@ public class EnemyAttack : MonoBehaviour
 
     private float distanceBet;
     public float DistanceRange = 10;
+
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,19 @@ public class EnemyAttack : MonoBehaviour
     //         Destroy(gameObject);
     //     }
     // }
+
+    //decrease health and died <= 0
+    // public void TakeDamage(float damage){
+    //     health -= damage;
+
+    //     if(health <= 0f){
+    //         Destroy(gameObject);
+    //         Debug.Log("Enemy Died");
+    //     }
+
+    
+
+
 
 
 
