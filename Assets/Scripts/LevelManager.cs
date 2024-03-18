@@ -12,9 +12,11 @@ public class LevelManager : MonoBehaviour
 
     public int score;
     public TextMeshProUGUI scoreText;
+    
 
     private void Awake(){
         manager = this;
+        SaveSystem.Initialise();
     }
 
     // activate deathscreen
@@ -33,3 +35,9 @@ public class LevelManager : MonoBehaviour
     }
 
 }
+// [System.Serializable] public class SaveData{
+//     public int highscore;
+//     public SaveData(int _hs){
+//         highscore = _hs;
+//     }
+// }

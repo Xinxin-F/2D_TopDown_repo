@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private float health = 2f;
-    [SerializeField] private int KillMeleeEnemyScore = 10;
+    [SerializeField] private float FullHealth; 
 
+    // [SerializeField] private int KillMeleeEnemyScore = 10;
+
+    // public UnityEvent OnDied;
     public void TakeDamage(float damage){
-        health -= damage;
+        FullHealth -= damage;
 
-        if(health <= 0f){
+        if(FullHealth <= 0f){
             Destroy(gameObject);
             //Debug.Log("Enemy Died");
-            LevelManager.manager.IncreaseScore(KillMeleeEnemyScore); 
+            // LevelManager.manager.IncreaseScore(KillMeleeEnemyScore); 
+
+            // OnDied.Invoke();
         }
     }
+
+
+
+
 }
