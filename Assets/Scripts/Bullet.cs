@@ -40,6 +40,9 @@ public class Bullet : MonoBehaviour
             other.GetComponent<WreckObsHealth>().TakeDamage(RangeDamage);
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("Rock")){
+            Destroy(gameObject);
+        }
     }
 
 
