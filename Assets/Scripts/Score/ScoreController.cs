@@ -14,6 +14,4 @@ public class ScoreController : MonoBehaviour
       //   Debug.Log("ScoreAdded");
    }
 
-   
-    
 }

@@ -36,6 +36,10 @@ public class Bullet : MonoBehaviour
         else if (other.gameObject.CompareTag("Wall")){
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("WrekableObs")){
+            other.GetComponent<WreckObsHealth>().TakeDamage(RangeDamage);
+            Destroy(gameObject);
+        }
     }
 
 

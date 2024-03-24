@@ -32,10 +32,8 @@ public class LevelManager : MonoBehaviour
 
     public void IncreaseScore(int amount){
         score += amount;
-        GameObject.FindObjectOfType<ScoreUI>().UpdateScore();
+        GameObject.FindObjectOfType<ScoreUI>().UpdateScore(); //update in GameScene
     }
-
-
 
 
 }

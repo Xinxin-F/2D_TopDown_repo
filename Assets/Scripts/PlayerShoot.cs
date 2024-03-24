@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerShoot : MonoBehaviour
 
     private float rangedAttackTimer;
     private float MeleeAttackTimer;
+    
+    [SerializeField] Slider BulletSlider;
 
 
 
@@ -32,7 +35,6 @@ public class PlayerShoot : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
      void Update()
     {
         //rotateWithMouse(shootingAlignment);
@@ -44,7 +46,6 @@ public class PlayerShoot : MonoBehaviour
 
     // check whether range attack is triggered
     private void checkRangeAttack(){
-        // if left key is pressed, range attack
         if(Input.GetMouseButtonDown(0) && rangedAttackTimer <= 0f){
             RangedAttack();
             rangedAttackTimer = RangedAttackCool; //reset timer every time shoot
@@ -56,7 +57,6 @@ public class PlayerShoot : MonoBehaviour
 
     // check whether melee attack is triggered
     private void checkMeleeAttack(){
-        // if right key is pressed, melee attack
         if(Input.GetMouseButtonDown(1) && MeleeAttackTimer <= 0f){
             anim.SetTrigger("MeleeAttack");
             MeleeAttackTimer = MeleeCool; //reset timer every time shoot
@@ -74,6 +74,10 @@ public class PlayerShoot : MonoBehaviour
         
         shootingAlignment.rotation = Quaternion.Euler(0, 0, angle);
     }
+
+    // private void ShootingRotateWithMouse(){
+    //     float angle = AngleTowardsMouse()
+    // }
 
 
     private void RangedAttack(){
