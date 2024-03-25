@@ -30,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
             Destroy(gameObject);
             //Debug.Log("Enemy Died");
             //LevelManager.manager.IncreaseScore(KillMeleeEnemyScore);
+            LevelManager.manager.GameOver();
             // EnemyScoreAllocator.AllocateScore();
 
             // OnDied.Invoke();

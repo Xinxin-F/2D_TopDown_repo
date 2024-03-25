@@ -18,13 +18,13 @@ public class PlayerShoot : MonoBehaviour
 
     [SerializeField] private float RangedAttackCool = 0.5f;
     [SerializeField] private float MeleeCool = 2f;
+    [SerializeField] private float MeleeDamage = 2f;
+
 
     private float rangedAttackTimer;
     private float MeleeAttackTimer;
     
     [SerializeField] Slider BulletSlider;
-
-
 
 
     void Start()
@@ -40,7 +40,7 @@ public class PlayerShoot : MonoBehaviour
         //rotateWithMouse(shootingAlignment);
         ShootingRotateWithMouse();
         checkRangeAttack();
-        // checkMeleeAttack();
+        checkMeleeAttack();
         
     }
 
@@ -89,13 +89,19 @@ public class PlayerShoot : MonoBehaviour
     // }
 
     // player is not attacking enemy, it is actually bullet attack it.
-    // private void OnTriggerEnter2D(Collider2D other){
-    //     if(other.tag == "Enemy"){
-    //     //  if(other.gameObject.CompareTag("Enemy")){
-    //         // other.GetComponent<HealthController>().TakeDamage(RangeDamage); //<> the name should be 
-    //         Debug.Log("Attack Enemy");
-    //     }
-    // }
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.tag == "Enemy"){
+        //  if(other.gameObject.CompareTag("Enemy")){
+            other.GetComponent<HealthController>().TakeDamage(MeleeDamage); //<> the name should be 
+            // Debug.Log("Attack Enemy");
+        }
+        // else if (other.tag == "WrekableObs"){
+        else if (other.CompareTag("WrekableObs")){
+            other.GetComponent<WreckObsHealth>().TakeDamage(MeleeDamage);
+            // Debug.Log("obstable Attack");
+
+        }
+    }
 
 
 }
