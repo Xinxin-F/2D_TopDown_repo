@@ -22,11 +22,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage){
 
-        FullHealth -= damage;
+        currentHealth -= damage;
         OnHealthChanged.Invoke();
         
 
-        if(FullHealth <= 0f){
+        if(currentHealth <= 0f){
             Destroy(gameObject);
             //Debug.Log("Enemy Died");
             //LevelManager.manager.IncreaseScore(KillMeleeEnemyScore);
