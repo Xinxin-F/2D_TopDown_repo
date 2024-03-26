@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MeleeAttack : MonoBehaviour
 {
@@ -11,8 +12,6 @@ public class MeleeAttack : MonoBehaviour
     private Animator anim;
     private float distanceBet;
     public float DistanceRange = 10;
-
-
 
     [SerializeField] private float MeleeCool = 1f;
     [SerializeField] private float MeleeAttackDamage = 1f;
@@ -34,7 +33,6 @@ public class MeleeAttack : MonoBehaviour
     }
 
 
-    // check whether melee attack is triggered
     private void checkMeleeAttack(){
 
         distanceBet = Vector2.Distance(transform.position, player.transform.position);
@@ -53,12 +51,10 @@ public class MeleeAttack : MonoBehaviour
 
     }
 
-    // player is not attacking enemy, it is actually bullet attack it.
     private void OnTriggerEnter2D(Collider2D other){
         if(other.tag == "Player"){
         //  if(other.gameObject.CompareTag("Enemy")){
             other.GetComponent<PlayerHealth>().TakeDamage(MeleeAttackDamage); 
-            // Debug.Log("Attack Enemy");
         }
 
     }

@@ -23,8 +23,9 @@ public class PlayerShoot : MonoBehaviour
 
     private float rangedAttackTimer;
     private float MeleeAttackTimer;
+    public MeleeTimerUI meleeTimerUI;
     
-    [SerializeField] Slider BulletSlider;
+    //[SerializeField] Slider BulletSlider;
 
 
     void Start()
@@ -33,6 +34,8 @@ public class PlayerShoot : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
+        //meleeTimerUI = GetComponentInChildren<MeleeTimerUI>(); // initialise timer 
     }
 
      void Update()
@@ -55,16 +58,27 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
+    
+
     // check whether melee attack is triggered
     private void checkMeleeAttack(){
         if(Input.GetMouseButtonDown(1) && MeleeAttackTimer <= 0f){
             anim.SetTrigger("MeleeAttack");
             MeleeAttackTimer = MeleeCool; //reset timer every time shoot
+
+            // Start the cooldown timer UI
+            meleeTimerUI.StartCooldown(MeleeCool);
         }
         else{
             MeleeAttackTimer -= Time.deltaTime;
         }
 
+    }
+
+    public float RemainingMeleeAttackPercentage{
+        get{
+            return MeleeAttackTimer/MeleeCool;
+        }
     }
 
     private void ShootingRotateWithMouse(){
