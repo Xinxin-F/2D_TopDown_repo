@@ -23,7 +23,7 @@ public class PlayerShoot : MonoBehaviour
 
     private float rangedAttackTimer;
     private float MeleeAttackTimer;
-    public MeleeTimerUI meleeTimerUI;
+    //public MeleeTimerUI meleeTimerUI;
     
     //[SerializeField] Slider BulletSlider;
 
@@ -41,9 +41,12 @@ public class PlayerShoot : MonoBehaviour
      void Update()
     {
         //rotateWithMouse(shootingAlignment);
-        ShootingRotateWithMouse();
-        checkRangeAttack();
-        checkMeleeAttack();
+        if(!PausePage.isPaused){
+            ShootingRotateWithMouse();
+            checkRangeAttack();
+            checkMeleeAttack();
+        }
+        
         
     }
 
@@ -67,7 +70,7 @@ public class PlayerShoot : MonoBehaviour
             MeleeAttackTimer = MeleeCool; //reset timer every time shoot
 
             // Start the cooldown timer UI
-            meleeTimerUI.StartCooldown(MeleeCool);
+            ///meleeTimerUI.StartCooldown(MeleeCool);
         }
         else{
             MeleeAttackTimer -= Time.deltaTime;
@@ -77,6 +80,7 @@ public class PlayerShoot : MonoBehaviour
 
     public float RemainingMeleeAttackPercentage{
         get{
+            // Debug.Log(MeleeAttackTimer/MeleeCool);
             return MeleeAttackTimer/MeleeCool;
         }
     }

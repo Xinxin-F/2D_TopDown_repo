@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     public GameObject deatheScreen;
 
     public int score;
-    public TextMeshProUGUI scoreText;
+   // public TextMeshProUGUI scoreText;
     public SaveData data;
 
     private void Awake(){
@@ -28,12 +28,15 @@ public class LevelManager : MonoBehaviour
     // activate deathscreen
     public void GameOver(){
         deatheScreen.SetActive(true);
-        scoreText.text = "Score" + score.ToString();
+        //scoreText.text = "Score" + score.ToString(); //update when lose
     }
 
     // load the current game scene
-    public void RestartGame(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void RestartGameButton(){
+        SceneManager.LoadScene("GameScene");
+    }
+    public void BackMenuButton(){
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void IncreaseScore(int amount){

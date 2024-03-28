@@ -5,35 +5,40 @@ using UnityEngine.UI;
 public class MeleeTimerUI : MonoBehaviour
 {
     [SerializeField] private Image uiFill;
-    [SerializeField] private Text uiText;
+    //[SerializeField] private Text uiText;
 
-    private void Start()
-    {
-        StartCooldown(0f);
-    }
+    // private void Start()
+    // {
+    //     StartCooldown(0f);
+    // }
 
-    public void StartCooldown(float cooldownTime)
-    {
-        StartCoroutine(UpdateTimer(cooldownTime));
-        Debug.Log("StartCooldown method called with: " + cooldownTime);
-    }
+    // public void StartCooldown(float cooldownTime)
+    // {
+    //     StartCoroutine(UpdateTimer(cooldownTime));
+    //     Debug.Log("StartCooldown method called with: " + cooldownTime);
+    // }
 
-    private IEnumerator UpdateTimer(float cooldownTime)
-    {
-        float timeLeft = cooldownTime;
-        uiFill.fillAmount = 1;
+    // public void UpdateTimer(PlayerShoot meleeAttack){
+    //     uiFill.fillAmount = meleeAttack.RemainingMeleeAttackPercentage;
+    //     Debug.Log("fillAmount: " + uiFill.fillAmount);
+    // }
 
-        while (timeLeft > 0)
-        {
-            timeLeft -= Time.deltaTime;
-            uiFill.fillAmount = timeLeft / cooldownTime;
-            uiText.text = $"{Mathf.Floor(timeLeft)}:{(timeLeft % 1).ToString("F1")}";
-            yield return null;
-        }
+    // private IEnumerator UpdateTimer(float cooldownTime)
+    // {
+    //     float timeLeft = cooldownTime;
+    //     uiFill.fillAmount = 1;
 
-        uiFill.fillAmount = 0;
-        uiText.text = "Ready";
-    }
+    //     while (timeLeft > 0)
+    //     {
+    //         timeLeft -= Time.deltaTime;
+    //         uiFill.fillAmount = timeLeft / cooldownTime;
+    //         uiText.text = $"{Mathf.Floor(timeLeft)}:{(timeLeft % 1).ToString("F1")}";
+    //         yield return null;
+    //     }
+
+    //     uiFill.fillAmount = 0;
+    //     uiText.text = "Ready";
+    // }
 }
 
 

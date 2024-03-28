@@ -11,7 +11,7 @@ public class MeleeAttack : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
     private float distanceBet;
-    public float DistanceRange = 10;
+    [SerializeField] public float DistanceRange = 5;
 
     [SerializeField] private float MeleeCool = 1f;
     [SerializeField] private float MeleeAttackDamage = 1f;
@@ -35,13 +35,17 @@ public class MeleeAttack : MonoBehaviour
 
     private void checkMeleeAttack(){
 
+        if (player == null) {
+        return;
+        }
+
         distanceBet = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         
-        if (distanceBet < DistanceRange && MeleeAttackTimer <= 0f){
+        if (distanceBet < DistanceRange && MeleeAttackTimer <= 0f ){
             anim.SetTrigger("EnemyMelee");
             MeleeAttackTimer = MeleeCool; //reset timer every time shoot
         }
