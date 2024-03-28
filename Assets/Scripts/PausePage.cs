@@ -14,7 +14,7 @@ public class PausePage : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space)){
@@ -25,6 +25,7 @@ public class PausePage : MonoBehaviour
                 PauseGame();
             }
         }
+
     }
 
     public void PauseGame(){
@@ -42,5 +43,10 @@ public class PausePage : MonoBehaviour
     public void GoToMainMenu(){
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartGameButton(){
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("GameScene");
     }
 }
