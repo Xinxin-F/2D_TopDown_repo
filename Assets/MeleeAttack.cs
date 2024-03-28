@@ -11,7 +11,7 @@ public class MeleeAttack : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
     private float distanceBet;
-    [SerializeField] public float DistanceRange = 5;
+    [SerializeField] public float DistanceRange = 4f;
 
     [SerializeField] private float MeleeCool = 1f;
     [SerializeField] private float MeleeAttackDamage = 1f;

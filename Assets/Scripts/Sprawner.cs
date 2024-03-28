@@ -6,8 +6,9 @@ public class Sprawner : MonoBehaviour
 {
     [SerializeField] private int NumToSpawn;
     public List<GameObject> spawnPool;
+    //public GameObject toSpawn;
 
-    public GameObject Quad;
+     public GameObject Quad;
     // public Collider Walls;
 
 
@@ -22,10 +23,22 @@ public class Sprawner : MonoBehaviour
     {
         
     }
+
+    // public void SpawnObjects(){
+        
+        
+    //     // GameObject toSpawn;
+    //     for(int i = 0; i < NumToSpawn; i++){
+    //         Instantiate(toSpawn, new Vector3(Random.Range(1f, 25), Random.Range(1f, 25), 0), toSpawn.transform.rotation);
+    //     }
+
+    // }
+
+
     public void SpawnObjects(){
         int randomItem = 0;
         GameObject toSpawn;
-        MeshCollider c = Quad.GetComponent<MeshCollider>();
+        //MeshCollider c = Quad.GetComponent<MeshCollider>();
         float screenX, screenY;
 
         // Vector2 minBounds = Walls.bounds.min;
@@ -37,8 +50,10 @@ public class Sprawner : MonoBehaviour
             randomItem = Random.Range(0, spawnPool.Count);
             toSpawn = spawnPool[randomItem];
 
-            screenX =Random.Range(c.bounds.min.x, c.bounds.max.x);
-            screenY =Random.Range(c.bounds.min.y, c.bounds.max.y);
+            // screenX = Random.Range(c.bounds.min.x, c.bounds.max.x);
+            // screenY = Random.Range(c.bounds.min.y, c.bounds.max.y);
+            screenX = Random.Range(-2f, 18f);
+            screenY = Random.Range(-13, 8);
             pos = new Vector2(screenX, screenY);
 
             // float randomX = Random.Range(minBounds.x, maxBounds.x);
@@ -50,6 +65,10 @@ public class Sprawner : MonoBehaviour
         }
         
     }
+
+    // void PreventSpawnOverlap(){
+
+    // }
 
 //     private Vector2 GetRandomSpawnPosition(Collider2D collider, float obstacleClearanceRadius)
 // {

@@ -23,6 +23,7 @@ public class PlayerShoot : MonoBehaviour
 
     private float rangedAttackTimer;
     private float MeleeAttackTimer;
+
     //public MeleeTimerUI meleeTimerUI;
     
     //[SerializeField] Slider BulletSlider;
