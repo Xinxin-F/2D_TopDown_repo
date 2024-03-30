@@ -52,8 +52,8 @@ public class Sprawner : MonoBehaviour
 
             // screenX = Random.Range(c.bounds.min.x, c.bounds.max.x);
             // screenY = Random.Range(c.bounds.min.y, c.bounds.max.y);
-            screenX = Random.Range(-2f, 18f);
-            screenY = Random.Range(-13, 8);
+            screenX = Random.Range(-0.4f, 20f);
+            screenY = Random.Range(-9f, 10f);
             pos = new Vector2(screenX, screenY);
 
             // float randomX = Random.Range(minBounds.x, maxBounds.x);

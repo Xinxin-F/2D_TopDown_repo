@@ -109,6 +109,9 @@ public class PlayerShoot : MonoBehaviour
 
     // player is not attacking enemy, it is actually bullet attack it.
     private void OnTriggerEnter2D(Collider2D other){
+        if(other.tag == null){
+            return;
+        }
         if(other.tag == "Enemy"){
         //  if(other.gameObject.CompareTag("Enemy")){
             other.GetComponent<HealthController>().TakeDamage(MeleeDamage); //<> the name should be 

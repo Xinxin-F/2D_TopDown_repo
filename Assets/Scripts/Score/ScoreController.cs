@@ -14,4 +14,20 @@ public class ScoreController : MonoBehaviour
       //   Debug.Log("ScoreAdded");
    }
 
+   private ScoreData sd;
+
+   void Awake(){
+      sd = new ScoreData();
+   }
+
+   public IEnumerable<Score> GetHighScores{
+         return sd.scores.OrderByDescending(x=>x.score);
+   }
+
+   public void AddScoreToBoard(Score FinalScore){
+      sd.scores.Add(FinalScore);
+   }
+
+
+
 }
