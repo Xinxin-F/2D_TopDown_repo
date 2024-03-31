@@ -4,18 +4,36 @@ using UnityEngine;
 
 public class Sprawner : MonoBehaviour
 {
-    [SerializeField] private int NumToSpawn;
-    public List<GameObject> spawnPool;
+    // [SerializeField] private int NumToSpawn;
+
+    [System.Serializable]
+    public class SpawnableObject
+    {
+        public GameObject prefab;
+        public int spawnNumber;
+    }
+    public List<SpawnableObject> spawnPool;
     //public GameObject toSpawn;
 
-     public GameObject Quad;
-    // public Collider Walls;
+    public GameObject Quad;
 
 
-    // Start is called before the first frame update
     void Start()
     {
-        SpawnObjects();
+
+        foreach (var spawnObject in spawnPool)
+        {
+            SpawnObjects(spawnObject.prefab, spawnObject.spawnNumber);
+        }
+        // SpawnObjects();
+        //
+        // foreach (var spawnObject in spawnPool)
+        // {
+        //     for (int i = 0; i < spawnObject.spawnNumber; i++)
+        //     {
+        //         SpawnObjects(spawnObject.prefab, spawnObject.spawnNumber);
+        //     }
+        // }
     }
 
     // Update is called once per frame
@@ -24,91 +42,82 @@ public class Sprawner : MonoBehaviour
         
     }
 
-    public void SpawnObjects(){
-        int randomItem = 0;
-        GameObject toSpawn;
-        //MeshCollider c = Quad.GetComponent<MeshCollider>();
+     public void SpawnObjects(GameObject objectToSpawn, int NumToSpawn)
+    {
         float screenX, screenY;
-
-        // Vector2 minBounds = Walls.bounds.min;
-        // Vector2 maxBounds = Walls.bounds.max;
-
         Vector2 pos;
-        // Create a list to keep track of positions already used
+        int tries = 100;
 
-         int tries = 100;
-        //List<Vector2> usedPositions = new List<Vector2>();
-
-        for(int i = 0; i < NumToSpawn; i++){
-            randomItem = Random.Range(0, spawnPool.Count);
-            toSpawn = spawnPool[randomItem];
-
-            // screenX = Random.Range(c.bounds.min.x, c.bounds.max.x);
-            // screenY = Random.Range(c.bounds.min.y, c.bounds.max.y);
-            do
+        for (int i = 0; i < NumToSpawn; i++)
         {
-            screenX = Random.Range(-0.4f, 20f);
-            screenY = Random.Range(-9f, 10f);
-            pos = new Vector2(screenX, screenY);
-
-            tries--;
-            //  } while (usedPositions.Contains(pos)); 
-            } while (Physics2D.OverlapCircle(pos, toSpawn.transform.localScale.x) != null && tries > 0);
+            do
+            {
+                screenX = Random.Range(-0.4f, 20f);
+                screenY = Random.Range(-9f, 10f);
+                pos = new Vector2(screenX, screenY);
+                tries--;
+            } while (Physics2D.OverlapCircle(pos, objectToSpawn.transform.localScale.x) != null && tries > 0);
 
             if (tries > 0)
             {
-                Instantiate(toSpawn, pos, toSpawn.transform.rotation);
+                GameObject instance = Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
+                // if (instance.GetComponent<Enemy>())
+                // {
+                //     instance.GetComponent<Enemy>().spawner = this;
+                // }
             }
-
-            //usedPositions.Add(pos);
-
-            // float randomX = Random.Range(minBounds.x, maxBounds.x);
-            // float randomY = Random.Range(minBounds.y, maxBounds.y);
-
-            // Vector2 spawnPosition = new Vector2(randomX, randomY);
-        
-        
         }
     }
-}
-    // void PreventSpawnOverlap(){
 
+    // public void SpawnObjects(objectToSpawn, int NumToSpawn){
+    //     //int randomItem = 0;
+    //     //GameObject toSpawn;
+    //     //MeshCollider c = Quad.GetComponent<MeshCollider>();
+    //     float screenX, screenY;
+
+    //     // Vector2 minBounds = Walls.bounds.min;
+    //     // Vector2 maxBounds = Walls.bounds.max;
+
+    //     Vector2 pos;
+    //     // Create a list to keep track of positions already used
+
+    //      int tries = 100;
+    //     //List<Vector2> usedPositions = new List<Vector2>();
+
+    //     for(int i = 0; i < NumToSpawn; i++){
+    //         //
+
+    //         // screenX = Random.Range(c.bounds.min.x, c.bounds.max.x);
+    //         // screenY = Random.Range(c.bounds.min.y, c.bounds.max.y);
+    //         do
+    //         {
+    //         screenX = Random.Range(-0.4f, 20f);
+    //         screenY = Random.Range(-9f, 10f);
+    //         pos = new Vector2(screenX, screenY);
+
+    //         tries--;
+    //         //  } while (usedPositions.Contains(pos)); 
+    //         } while (Physics2D.OverlapCircle(pos, toSpawn.transform.localScale.x) != null && tries > 0);
+
+    //         if (tries > 0)
+    //         {
+    //            // Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
+    //            GameObject instance = Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
+
+    //             if (instance.GetComponent<Enemy>())
+    //             {
+    //                 instance.GetComponent<Enemy>().spawner = this;
+    //             }
+    //         }
+
+    //         //usedPositions.Add(pos);
+
+    //         // float randomX = Random.Range(minBounds.x, maxBounds.x);
+    //         // float randomY = Random.Range(minBounds.y, maxBounds.y);
+
+    //         // Vector2 spawnPosition = new Vector2(randomX, randomY);
+        
+        
+    //     }
     // }
-
-//     private Vector2 GetRandomSpawnPosition(Collider2D collider, float obstacleClearanceRadius)
-// {
-//     Vector2 minBounds = collider.bounds.min;
-//     Vector2 maxBounds = collider.bounds.max;
-
-//     Vector2 spawnPosition = new Vector2(
-//         Random.Range(minBounds.x, maxBounds.x),
-//         Random.Range(minBounds.y, maxBounds.y)
-//     );
-
-//     Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, obstacleClearanceRadius);
-//     if (colliders.Length > 1)  // Assuming this script's collider is also detected
-//     {
-//         return GetRandomSpawnPosition(collider, obstacleClearanceRadius);
-//     }
-
-//     return spawnPosition;
-// }
-
-// public void SpawnObjects()
-// {
-//     int randomItem = 0;
-//     GameObject toSpawn;
-//     Collider2D collider = Quad.GetComponent<Collider2D>();
-
-//     for (int i = 0; i < NumToSpawn; i++)
-//     {
-//         randomItem = Random.Range(0, spawnPool.Count);
-//         toSpawn = spawnPool[randomItem];
-
-//         Vector2 spawnPosition = GetRandomSpawnPosition(collider, obstacleClearanceRadius);
-//         Instantiate(toSpawn, spawnPosition, Quaternion.identity);
-//     }
-// }
-
-
-
+}
