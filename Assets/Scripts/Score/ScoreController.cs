@@ -8,25 +8,26 @@ public class ScoreController : MonoBehaviour
    public UnityEvent OnScoreChanged;
    public int Score {get; private set;}
 
+
    public void AddScore(int amount){
         Score += amount;
         OnScoreChanged.Invoke();
       //   Debug.Log("ScoreAdded");
    }
 
-   private ScoreData sd;
+   // private ScoreData sd;
 
-   void Awake(){
-      sd = new ScoreData();
-   }
+   // void Awake(){
+   //    sd = new ScoreData();
+   // }
 
-   public IEnumerable<Score> GetHighScores{
-         return sd.scores.OrderByDescending(x=>x.score);
-   }
+   // public IEnumerable<FinalScore> GetHighScores{
+   //       return sd.finalScores.OrderByDescending(x => x.finalScore);
+   // }
 
-   public void AddScoreToBoard(Score FinalScore){
-      sd.scores.Add(FinalScore);
-   }
+   // public void AddScoreToBoard(RankContent finalScore){
+   //    sd.scores.Add(finalScore);
+   // }
 
 
 
