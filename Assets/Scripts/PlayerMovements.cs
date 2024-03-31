@@ -9,6 +9,9 @@ public class PlayerMovements : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
+    [SerializeField] private Transform player;
+     private Vector2 mousePos;
+
     private float dirX = 0f;
     private float dirY = 0f;
     [SerializeField] private float moveSpeed = 2.5f; //serializeField can change in unity Inspector window
@@ -28,10 +31,10 @@ public class PlayerMovements : MonoBehaviour
         dirY = Input.GetAxisRaw("Vertical");
 
         rb.velocity = new Vector2(dirX * moveSpeed, dirY * moveSpeed);
-
-        UpdateAnimationState();
-        //rotateWithMouse(shootingAlignment);
-
+        if(!PausePage.isPaused){
+            UpdateAnimationState();
+            //rotateWithMouse(shootingAlignment);
+        }
         
     }
 
@@ -39,18 +42,27 @@ public class PlayerMovements : MonoBehaviour
     private void UpdateAnimationState()
     {
 
-        if (dirX > 0f)
-        {
-            sprite.flipX = false; //avoid flipping tilemap
-        }
-        else if (dirX < 0f)
-        {
-            sprite.flipX = true;
-        }
-        else
-        {
+        // if (dirX > 0f)
+        // {
+        //     sprite.flipX = false; //avoid flipping tilemap
+        // }
+        // else if (dirX < 0f)
+        // {
+        //     sprite.flipX = true;
+        // }
+        // else
+        // {
 
-        }
+        // }
+
+
+
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float angle = Mathf.Atan2(mousePos.y - transform.position.y, 
+            mousePos.x - transform.position.x) * Mathf.Rad2Deg;
+        
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    
  
     }
 

@@ -15,6 +15,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject MeleePrefab;
     [SerializeField] private Transform shootingAlignment;
+    [SerializeField] private Transform player;
 
     [SerializeField] private float RangedAttackCool = 0.5f;
     [SerializeField] private float MeleeCool = 2f;
@@ -101,6 +102,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void RangedAttack(){
         Instantiate(bulletPrefab, shootingAlignment.position, shootingAlignment.rotation);
+        //Instantiate(bulletPrefab, player.position, player.rotation);
     }
 
     // private void MeleeAttack(){
