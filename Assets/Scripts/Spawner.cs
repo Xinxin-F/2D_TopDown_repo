@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sprawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     // [SerializeField] private int NumToSpawn;
 
@@ -12,6 +12,8 @@ public class Sprawner : MonoBehaviour
         public GameObject prefab;
         public int spawnNumber;
     }
+
+    [SerializeField]public int MeleeEnemyNumber; 
     public List<SpawnableObject> spawnPool;
     //public GameObject toSpawn;
 
@@ -61,13 +63,25 @@ public class Sprawner : MonoBehaviour
             if (tries > 0)
             {
                 GameObject instance = Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
-                // if (instance.GetComponent<Enemy>())
-                // {
-                //     instance.GetComponent<Enemy>().spawner = this;
+                // if (instance.CompareTag("Enemy"))
+                // {   
+                    
+                //     instance.GetComponent<HealthController>().spawner = this;
+                //     MeleeEnemyNumber++;
                 // }
             }
         }
     }
+    
+    // respawn enemy
+    // public IEnumerator Respawn(GameObject objectToRespawn)
+    // {
+    //     yield return new WaitForSeconds(2);
+    //     SpawnObjects(objectToRespawn, 1);
+    // }
+
+
+}
 
     // public void SpawnObjects(objectToSpawn, int NumToSpawn){
     //     //int randomItem = 0;
@@ -120,4 +134,4 @@ public class Sprawner : MonoBehaviour
         
     //     }
     // }
-}
+

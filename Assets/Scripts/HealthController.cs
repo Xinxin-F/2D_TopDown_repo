@@ -8,6 +8,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private float FullHealth; 
 
     [SerializeField] private int KillMeleeEnemyScore = 10;
+    public Spawner spawner;
 
     // public UnityEvent OnDied;
     // private EnemyScoreAllocator enemyScoreAllocator;
@@ -30,6 +31,12 @@ public class HealthController : MonoBehaviour
             // EnemyScoreAllocator.AllocateScore();
 
             // OnDied.Invoke();
+            // If the spawner exists, call Respawn
+        if (spawner != null)
+        {
+            spawner.MeleeEnemyNumber--; 
+            StartCoroutine(spawner.Respawn(gameObject));
+        }
         }
 
 
