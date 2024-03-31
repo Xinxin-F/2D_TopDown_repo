@@ -83,7 +83,13 @@ public class PlayerShoot : MonoBehaviour
     public float RemainingMeleeAttackPercentage{
         get{
             // Debug.Log(MeleeAttackTimer/MeleeCool);
-            return MeleeAttackTimer/MeleeCool;
+            return MeleeAttackTimer/RangedAttackCool;
+        }
+    }
+
+    public float RemainingRangeAttackPercentage{
+        get{
+            return rangedAttackTimer/MeleeCool;
         }
     }
 
