@@ -9381,7 +9381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &890338184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9418,6 +9418,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiFill: {fileID: 852247097}
+  readyText: {fileID: 1681429822}
+  playerShoot: {fileID: 381252624}
 --- !u!1 &890671294
 GameObject:
   m_ObjectHideFlags: 0
@@ -10466,7 +10468,7 @@ GameObject:
   - component: {fileID: 1681429823}
   - component: {fileID: 1681429822}
   m_Layer: 5
-  m_Name: TimerText
+  m_Name: ReadyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

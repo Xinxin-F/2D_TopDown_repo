@@ -24,17 +24,6 @@ public class Sprawner : MonoBehaviour
         
     }
 
-    // public void SpawnObjects(){
-        
-        
-    //     // GameObject toSpawn;
-    //     for(int i = 0; i < NumToSpawn; i++){
-    //         Instantiate(toSpawn, new Vector3(Random.Range(1f, 25), Random.Range(1f, 25), 0), toSpawn.transform.rotation);
-    //     }
-
-    // }
-
-
     public void SpawnObjects(){
         int randomItem = 0;
         GameObject toSpawn;
@@ -45,6 +34,10 @@ public class Sprawner : MonoBehaviour
         // Vector2 maxBounds = Walls.bounds.max;
 
         Vector2 pos;
+        // Create a list to keep track of positions already used
+
+         int tries = 100;
+        //List<Vector2> usedPositions = new List<Vector2>();
 
         for(int i = 0; i < NumToSpawn; i++){
             randomItem = Random.Range(0, spawnPool.Count);
@@ -52,20 +45,32 @@ public class Sprawner : MonoBehaviour
 
             // screenX = Random.Range(c.bounds.min.x, c.bounds.max.x);
             // screenY = Random.Range(c.bounds.min.y, c.bounds.max.y);
+            do
+        {
             screenX = Random.Range(-0.4f, 20f);
             screenY = Random.Range(-9f, 10f);
             pos = new Vector2(screenX, screenY);
+
+            tries--;
+            //  } while (usedPositions.Contains(pos)); 
+            } while (Physics2D.OverlapCircle(pos, toSpawn.transform.localScale.x) != null && tries > 0);
+
+            if (tries > 0)
+            {
+                Instantiate(toSpawn, pos, toSpawn.transform.rotation);
+            }
+
+            //usedPositions.Add(pos);
 
             // float randomX = Random.Range(minBounds.x, maxBounds.x);
             // float randomY = Random.Range(minBounds.y, maxBounds.y);
 
             // Vector2 spawnPosition = new Vector2(randomX, randomY);
-
-            Instantiate(toSpawn, pos, toSpawn.transform.rotation);
-        }
         
+        
+        }
     }
-
+}
     // void PreventSpawnOverlap(){
 
     // }
@@ -104,4 +109,6 @@ public class Sprawner : MonoBehaviour
 //         Instantiate(toSpawn, spawnPosition, Quaternion.identity);
 //     }
 // }
-}
+
+
+
