@@ -11,9 +11,14 @@ public class EnemyMovements : MonoBehaviour
     NavMeshAgent agent;
 
 
+    // void Awake(){
+    //     target = GameObject.FindGameObjectWithTag("Player").transform;
+    // }
+
     void Start(){
 
         // target = GameObject.Find("Player").transform;
+        
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
