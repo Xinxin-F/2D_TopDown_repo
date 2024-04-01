@@ -32,11 +32,11 @@ public class HealthController : MonoBehaviour
 
             // OnDied.Invoke();
             // If the spawner exists, call Respawn
-        // if (spawner != null)
-        // {
-        //     spawner.MeleeEnemyNumber--; 
-        //     StartCoroutine(spawner.Respawn(gameObject));
-        // }
+        if (spawner != null)
+        {
+            spawner.MeleeEnemyNumber--; 
+            StartCoroutine(spawner.Respawn(gameObject));
+        }
         }
 
 

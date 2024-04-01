@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
         public int spawnNumber;
     }
 
-    //[SerializeField]public int MeleeEnemyNumber; 
+    [SerializeField]public int MeleeEnemyNumber; 
     public List<SpawnableObject> spawnPool;
     //public GameObject toSpawn;
 
@@ -67,6 +67,8 @@ public class Spawner : MonoBehaviour
                 {   
                     EnemyMovements enemyMovements = instance.GetComponent<EnemyMovements>();
                     enemyMovements.target = GameObject.FindGameObjectWithTag("Player").transform;
+                    instance.GetComponent<HealthController>().spawner = this;
+                    MeleeEnemyNumber++;
                 }
                     
                 //     instance.GetComponent<HealthController>().spawner = this;
@@ -81,11 +83,11 @@ public class Spawner : MonoBehaviour
     }
     
     // respawn enemy
-    // public IEnumerator Respawn(GameObject objectToRespawn)
-    // {
-    //     yield return new WaitForSeconds(2);
-    //     SpawnObjects(objectToRespawn, 1);
-    // }
+    public IEnumerator Respawn(GameObject objectToRespawn)
+    {
+        yield return new WaitForSeconds(2);
+        SpawnObjects(objectToRespawn, 1);
+    }
 
 
 }
