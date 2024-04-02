@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
     // activate deathscreen
     public void GameOver(){
         deatheScreen.SetActive(true);
+        Time.timeScale = 0f;
         //scoreText.text = "Score" + score.ToString(); //update when lose
     }
 

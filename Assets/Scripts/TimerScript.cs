@@ -19,7 +19,7 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeIsRunning){
+        if(timeIsRunning && !PausePage.isPaused){
             if(timeRemaining >= 0){
                 timeRemaining -= Time.deltaTime;
                 Displaytime(timeRemaining);
