@@ -31,17 +31,16 @@ public class PlayerMovements : MonoBehaviour
         dirY = Input.GetAxisRaw("Vertical");
 
         rb.velocity = new Vector2(dirX * moveSpeed, dirY * moveSpeed);
-        if(!PausePage.isPaused){
+       // if(!PausePage.isPaused){
             UpdateAnimationState();
             //rotateWithMouse(shootingAlignment);
-        }
+       // }
         
     }
 
 
     private void UpdateAnimationState()
     {
-
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float angle = Mathf.Atan2(mousePos.y - transform.position.y, 
             mousePos.x - transform.position.x) * Mathf.Rad2Deg;
@@ -64,26 +63,4 @@ public class PlayerMovements : MonoBehaviour
  
     }
 
-    //rotate with position
-    // private void RotateWithMouse(){
-    //     mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //     float angle = Mathf.Atan2(mousePos.y - transform.position.y, 
-    //         mousePos.x - transform.position.x) * Mathf.Rad2Deg - 90f;
-        
-    //     transform.localRotation = Quaternion.Euler(0, 0, angle);
-    // }
-
-    // private void onCollisionEnter2D(Collision2D other){
-        
-    //     // for testing Lose Menu UI
-    //     if(other.gameObject.CompareTag("Enemy")){
-    //         LevelManager.manager.GameOver();
-    //         Destroy(gameObject);
-        
-    //     }
-    // }
-
-
-
-    
 }

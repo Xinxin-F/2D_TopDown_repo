@@ -40,17 +40,20 @@ public class PlayerShoot : MonoBehaviour
         //meleeTimerUI = GetComponentInChildren<MeleeTimerUI>(); // initialise timer 
     }
 
+    
+
      void Update()
     {
         //rotateWithMouse(shootingAlignment);
-        if(!PausePage.isPaused){
+        //if(!PausePage.isPaused){
             ShootingRotateWithMouse();
             checkRangeAttack();
             checkMeleeAttack();
-        }
+        //}
         
         
     }
+
 
     // check whether range attack is triggered
     private void checkRangeAttack(){

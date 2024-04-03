@@ -13,22 +13,22 @@ public class SecondTimerScript : MonoBehaviour
     public float timeRemaining = 30f;
     public bool timeIsRunning = true;
     public TMP_Text timeText;
-    public static SecondTimerScript instance; 
+    // public static SecondTimerScript instance; 
 
     // protected virtual void OnTimerFinished()
     // {
     //     SceneManager.LoadScene("SecondMap");
     // }
 
-     void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogWarning("More than one TimerScript instance found!");
-            return;
-        }
-        instance = this;
-    }
+    //  void Awake()
+    // {
+    //     if (instance != null)
+    //     {
+    //         Debug.LogWarning("More than one TimerScript instance found!");
+    //         return;
+    //     }
+    //     instance = this;
+    // }
 
     void Start()
     {
