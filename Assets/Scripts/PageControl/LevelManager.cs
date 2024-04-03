@@ -27,8 +27,8 @@ public class LevelManager : MonoBehaviour
 
     // activate deathscreen
     public void GameOver(){
+        TimerScript.instance.timeIsRunning = false; // Stop the timer
         deatheScreen.SetActive(true);
-        Time.timeScale = 0f;
         //scoreText.text = "Score" + score.ToString(); //update when lose
     }
 
@@ -50,6 +50,11 @@ public class LevelManager : MonoBehaviour
     public SaveData(int _hs){
         highscore = _hs;
     }
+    }
+
+    public void TransitSecondScene(){
+        
+        SceneManager.LoadScene("SecondMap");
     }
 
     // public GameState currentGameState = GameState.menu;
