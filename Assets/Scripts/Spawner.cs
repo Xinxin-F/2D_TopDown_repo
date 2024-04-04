@@ -54,8 +54,13 @@ public class Spawner : MonoBehaviour
 
             if (tries > 0)
             {
-                 Debug.Log("Spawning enemy at position: " + pos);
+                 //Debug.Log("Spawning enemy at position: " + pos);
                 GameObject instance = Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
+                if (instance.CompareTag("Enemy"))
+                {   
+                    EnemyMovements enemyMovements = instance.GetComponent<EnemyMovements>();
+                    enemyMovements.target = GameObject.FindGameObjectWithTag("Player").transform;
+                }
                 
             }
             if (tries <= 0)

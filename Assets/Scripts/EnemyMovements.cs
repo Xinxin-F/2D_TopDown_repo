@@ -25,7 +25,10 @@ public class EnemyMovements : MonoBehaviour
             agent.SetDestination(target.position);
             rotateTowardsPlayer();
         }
-    }
+            // agent.SetDestination(target.position);
+            // rotateTowardsPlayer();
+        }
+    
 
     void rotateTowardsPlayer(){
         Vector3 direction = target.position - transform.position;
@@ -34,6 +37,7 @@ public class EnemyMovements : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotateSpeed);
     }
 }
+
     // public GameObject player;
     // public Transform target;
     // public float EneSpeed = 2.5f;

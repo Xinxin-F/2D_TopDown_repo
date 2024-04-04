@@ -9105,7 +9105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6757d58752658407d89cea6c24a6b9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeleeEnemyNumber: 10
   spawnPool:
   - prefab: {fileID: 8977984181774311120, guid: d9e1722ac4cf5412ea99c1ec29f726f4, type: 3}
     spawnNumber: 15
@@ -9114,7 +9113,6 @@ MonoBehaviour:
   - prefab: {fileID: 4877051919274109914, guid: fcf438a69c48143f5b55fb43dd16c89e, type: 3}
     spawnNumber: 10
   Quad: {fileID: 1851687416}
-  EnemyIsDied: 0
 --- !u!4 &1283161736
 Transform:
   m_ObjectHideFlags: 0
