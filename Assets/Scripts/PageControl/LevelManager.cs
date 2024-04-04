@@ -29,11 +29,14 @@ public class LevelManager : MonoBehaviour
     public void GameOver(){
        // TimerScript.instance.timeIsRunning = false; // Stop the timer
         deatheScreen.SetActive(true);
+        Time.timeScale = 0f;
+        
         //scoreText.text = "Score" + score.ToString(); //update when lose
     }
 
     // load the current game scene
     public void RestartGameButton(){
+        Time.timeScale = 1f;
         SceneManager.LoadScene("GameScene");
     }
 
@@ -55,7 +58,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void TransitSecondScene(){
-
+        
         SceneManager.LoadScene("SecondMap");
     }
 

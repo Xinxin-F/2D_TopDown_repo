@@ -11,38 +11,13 @@ public class HealthController : MonoBehaviour
     [SerializeField] private int KillMeleeEnemyScore = 10;
     public Spawner spawner;
 
-    // public UnityEvent OnDied;
-    // private EnemyScoreAllocator enemyScoreAllocator;
 
 
     void Start(){
         CurrentHealth = FullHealth;
         spawner = FindObjectOfType<Spawner>();
     }
-
-
-    // public void TakeDamage(float damage){
-
-    //     CurrentHealth -= damage;
-
-    //     if (CurrentHealth <= 0f)  
-    //     {  
-    //         if(FullHealth <= 0f){
-    //         GameObject objectToRespawn = gameObject;
-    //         Destroy(gameObject);
-    //         LevelManager.manager.IncreaseScore(KillMeleeEnemyScore);
-
-    //         if (spawner != null)
-    //         {
-    //             WaitForSeconds(2); 
-    //             spawner.GetComponent<SpawnObjects>(objectToRespawn, 1);
-    //         }
-    //     }
-        
-    //     }
-
-    // }
-
+    
     public void TakeDamage(float damage){
         CurrentHealth -= damage;
 
@@ -67,6 +42,30 @@ public class HealthController : MonoBehaviour
     }
     
 }
+
+    // public void TakeDamage(float damage){
+
+    //     CurrentHealth -= damage;
+
+    //     if (CurrentHealth <= 0f)  
+    //     {  
+    //         if(FullHealth <= 0f){
+    //         GameObject objectToRespawn = gameObject;
+    //         Destroy(gameObject);
+    //         LevelManager.manager.IncreaseScore(KillMeleeEnemyScore);
+
+    //         if (spawner != null)
+    //         {
+    //             WaitForSeconds(2); 
+    //             spawner.GetComponent<SpawnObjects>(objectToRespawn, 1);
+    //         }
+    //     }
+        
+    //     }
+
+    // }
+
+    
 
         // if(FullHealth <= 0f){
         //     Destroy(gameObject);

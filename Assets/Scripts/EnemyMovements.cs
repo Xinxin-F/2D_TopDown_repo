@@ -17,6 +17,7 @@ public class EnemyMovements : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        //agent.autoRepath = true;
 
     }
 
