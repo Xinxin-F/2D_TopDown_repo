@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
         public int spawnNumber;
     }
 
-    [SerializeField]public int MeleeEnemyNumber; 
+
     public List<SpawnableObject> spawnPool;
     //public GameObject toSpawn;
 
@@ -27,15 +27,7 @@ public class Spawner : MonoBehaviour
         {
             SpawnObjects(spawnObject.prefab, spawnObject.spawnNumber);
         }
-        // SpawnObjects();
-        //
-        // foreach (var spawnObject in spawnPool)
-        // {
-        //     for (int i = 0; i < spawnObject.spawnNumber; i++)
-        //     {
-        //         SpawnObjects(spawnObject.prefab, spawnObject.spawnNumber);
-        //     }
-        // }
+        
     }
 
     // Update is called once per frame
@@ -62,18 +54,9 @@ public class Spawner : MonoBehaviour
 
             if (tries > 0)
             {
+                 Debug.Log("Spawning enemy at position: " + pos);
                 GameObject instance = Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
-                if (instance.CompareTag("Enemy"))
-                {   
-                    EnemyMovements enemyMovements = instance.GetComponent<EnemyMovements>();
-                    enemyMovements.target = GameObject.FindGameObjectWithTag("Player").transform;
-                    instance.GetComponent<HealthController>().spawner = this;
-                    MeleeEnemyNumber++;
-                }
-                    
-                //     instance.GetComponent<HealthController>().spawner = this;
-                //     MeleeEnemyNumber++;
-                // }
+                
             }
             if (tries <= 0)
             {
@@ -81,66 +64,5 @@ public class Spawner : MonoBehaviour
             }
         }
     }
-    
-    // respawn enemy
-    public IEnumerator Respawn(GameObject objectToRespawn)
-    {
-        yield return new WaitForSeconds(2);
-        SpawnObjects(objectToRespawn, 1);
-    }
-
 
 }
-
-    // public void SpawnObjects(objectToSpawn, int NumToSpawn){
-    //     //int randomItem = 0;
-    //     //GameObject toSpawn;
-    //     //MeshCollider c = Quad.GetComponent<MeshCollider>();
-    //     float screenX, screenY;
-
-    //     // Vector2 minBounds = Walls.bounds.min;
-    //     // Vector2 maxBounds = Walls.bounds.max;
-
-    //     Vector2 pos;
-    //     // Create a list to keep track of positions already used
-
-    //      int tries = 100;
-    //     //List<Vector2> usedPositions = new List<Vector2>();
-
-    //     for(int i = 0; i < NumToSpawn; i++){
-    //         //
-
-    //         // screenX = Random.Range(c.bounds.min.x, c.bounds.max.x);
-    //         // screenY = Random.Range(c.bounds.min.y, c.bounds.max.y);
-    //         do
-    //         {
-    //         screenX = Random.Range(-0.4f, 20f);
-    //         screenY = Random.Range(-9f, 10f);
-    //         pos = new Vector2(screenX, screenY);
-
-    //         tries--;
-    //         //  } while (usedPositions.Contains(pos)); 
-    //         } while (Physics2D.OverlapCircle(pos, toSpawn.transform.localScale.x) != null && tries > 0);
-
-    //         if (tries > 0)
-    //         {
-    //            // Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
-    //            GameObject instance = Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
-
-    //             if (instance.GetComponent<Enemy>())
-    //             {
-    //                 instance.GetComponent<Enemy>().spawner = this;
-    //             }
-    //         }
-
-    //         //usedPositions.Add(pos);
-
-    //         // float randomX = Random.Range(minBounds.x, maxBounds.x);
-    //         // float randomY = Random.Range(minBounds.y, maxBounds.y);
-
-    //         // Vector2 spawnPosition = new Vector2(randomX, randomY);
-        
-        
-    //     }
-    // }
-
