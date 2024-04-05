@@ -17,14 +17,17 @@ public class PausePage : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            if(isPaused){
-                ResumeGame();
-            }
-            else{
-                PauseGame();
-            }
+        if (LevelManager.manager.GameOverCheck == false){
+            if(Input.GetKeyDown(KeyCode.Space)){
+                if(isPaused){
+                    ResumeGame();
+                }
+                else{
+                    PauseGame();
+                }
         }
+        }
+        
 
     }
 

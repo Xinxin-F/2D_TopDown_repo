@@ -19,17 +19,21 @@ public class LevelManager : MonoBehaviour
     public int score;
    // public TextMeshProUGUI scoreText;
     public SaveData data;
+    public bool GameOverCheck;
 
     private void Awake(){
         manager = this;
         SaveSystem.Initialise();
+        GameOverCheck = false;
     }
 
     // activate deathscreen
     public void GameOver(){
        // TimerScript.instance.timeIsRunning = false; // Stop the timer
+       Time.timeScale = 0f;
         deatheScreen.SetActive(true);
-        Time.timeScale = 0f;
+        GameOverCheck = true;
+        
         
         //scoreText.text = "Score" + score.ToString(); //update when lose
     }
@@ -58,7 +62,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void TransitSecondScene(){
-        
+
         SceneManager.LoadScene("SecondMap");
     }
 
