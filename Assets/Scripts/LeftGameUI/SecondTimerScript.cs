@@ -8,34 +8,17 @@ using UnityEngine.SceneManagement;
 
 public class SecondTimerScript : MonoBehaviour
 {
-    // public abstract class TimerScript : MonoBehaviour
-    // {
+
     public float timeRemaining = 30f;
     public bool timeIsRunning = true;
     public TMP_Text timeText;
-    // public static SecondTimerScript instance; 
-
-    // protected virtual void OnTimerFinished()
-    // {
-    //     SceneManager.LoadScene("SecondMap");
-    // }
-
-    //  void Awake()
-    // {
-    //     if (instance != null)
-    //     {
-    //         Debug.LogWarning("More than one TimerScript instance found!");
-    //         return;
-    //     }
-    //     instance = this;
-    // }
 
     void Start()
     {
         timeIsRunning = true;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(timeIsRunning && !PausePage.isPaused){
@@ -44,10 +27,9 @@ public class SecondTimerScript : MonoBehaviour
                 Displaytime(timeRemaining);
             }
             else{
-                    // timeIsRunning = false;
                     timeRemaining = 0;
+                    LevelManager.manager.SaveScore();
                     SceneManager.LoadScene("Winning Page");
-                    //OnTimerFinished();
             }
         }
     }

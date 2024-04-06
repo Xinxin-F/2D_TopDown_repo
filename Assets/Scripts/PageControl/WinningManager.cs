@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class WinningManager : TimerScript
 {
-    
     public void SwitchScene(string name){
         SceneManager.LoadScene(name);
     }

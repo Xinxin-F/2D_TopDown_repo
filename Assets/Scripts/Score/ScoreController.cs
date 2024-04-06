@@ -7,6 +7,8 @@ public class ScoreController : MonoBehaviour
 {
    public UnityEvent OnScoreChanged;
    public int Score {get; private set;}
+   public float GameTime { get; set; }
+   
 
 
    public void AddScore(int amount){

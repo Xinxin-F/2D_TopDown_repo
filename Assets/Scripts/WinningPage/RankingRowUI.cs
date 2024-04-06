@@ -4,15 +4,17 @@ using UnityEngine;
 using TMPro;
 
 
-public class RankRowUI : MonoBehaviour
+public class RankingRowUI : MonoBehaviour
 {
-    public TextMeshProUGUI rank;
-    public TextMeshProUGUI finalScore;
+    public TextMeshProUGUI rankText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI dateTimeText;
 
-    public void SetRow(int rank, int finalScore)
+    public void SetRow(int rank, int score, string dateTime)
     {
-        this.rank.text = rank.ToString();
-        this.finalScore.text = finalScore.ToString();
+        rankText.text = rank.ToString();
+        scoreText.text = score.ToString();
+        dateTimeText.text = dateTime;
     }
 }
 

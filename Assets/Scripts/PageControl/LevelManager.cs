@@ -20,17 +20,19 @@ public class LevelManager : MonoBehaviour
    // public TextMeshProUGUI scoreText;
     public SaveData data;
     public bool GameOverCheck;
+    public Ranking ranking = new Ranking();
 
     private void Awake(){
         manager = this;
         SaveSystem.Initialise();
+        ranking.LoadFromFile("ranking");
         GameOverCheck = false;
     }
 
     // activate deathscreen
     public void GameOver(){
        // TimerScript.instance.timeIsRunning = false; // Stop the timer
-       Time.timeScale = 0f;
+        Time.timeScale = 0f;
         deatheScreen.SetActive(true);
         GameOverCheck = true;
         
@@ -61,10 +63,18 @@ public class LevelManager : MonoBehaviour
     }
     }
 
-    public void TransitSecondScene(){
+    // public void TransitSecondScene(){
+    //     SceneManager.LoadScene("SecondMap");
+    // }
 
-        SceneManager.LoadScene("SecondMap");
+    public void SaveScore()
+    {
+        GameResult result = new GameResult { Score = score, DateTime = System.DateTime.Now.ToString() };
+        ranking.AddResult(result);
+        ranking.SaveToFile("ranking");
     }
+
+
 
     // public GameState currentGameState = GameState.menu;
     // public static LevelManager manager;

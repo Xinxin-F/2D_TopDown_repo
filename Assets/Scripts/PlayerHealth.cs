@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
             return currentHealth/FullHealth;
         }
     }
+    
     public UnityEvent OnHealthChanged;
 
     public void TakeDamage(float damage){
