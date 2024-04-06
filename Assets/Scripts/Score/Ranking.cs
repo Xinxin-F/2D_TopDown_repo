@@ -1,9 +1,11 @@
-using System.IO;
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
+[Serializable]
 public class Ranking
 {
+    [SerializeField]
     private List<GameResult> results = new List<GameResult>();
     public List<GameResult> Results
     {
@@ -18,7 +20,11 @@ public class Ranking
 
     public void SaveToFile(string filename)
     {
+        // string json = JsonUtility.ToJson(this);
+        // SaveSystem.Save(filename, json);
+
         string json = JsonUtility.ToJson(this);
+        Debug.Log("Saving data: " + json);
         SaveSystem.Save(filename, json);
     }
 
