@@ -57,19 +57,20 @@ public class LevelManager : MonoBehaviour
     }
 
     [System.Serializable] public class SaveData{
-    public int highscore;
-    public SaveData(int _hs){
-        highscore = _hs;
-    }
+        public int highscore;
+        public SaveData(int _hs){
+            highscore = _hs;
+        }
     }
 
     // public void TransitSecondScene(){
     //     SceneManager.LoadScene("SecondMap");
     // }
 
+    
     public void SaveScore()
     {
-        GameResult result = new GameResult { Score = score, DateTime = System.DateTime.Now.ToString() };
+        GameResult result = new GameResult { Score = score, GameTime = System.DateTime.Now };
         ranking.AddResult(result);
         ranking.SaveToFile("ranking");
     }

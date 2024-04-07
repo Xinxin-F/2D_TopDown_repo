@@ -14,11 +14,12 @@ public class RankingListDisplay : MonoBehaviour
     {
         Ranking ranking = new Ranking();
         ranking.LoadFromFile("ranking");
+        //Debug.Log();
 
         for (int i = 0; i < ranking.Results.Count; i++)
         {
             RankingRowUI row = Instantiate(rankRowUIPrefab, transform);
-            row.SetRow(i + 1, ranking.Results[i].Score, ranking.Results[i].DateTime);
+            row.SetRow(i + 1, ranking.Results[i].Score, ranking.Results[i].GameTime.ToString());
         }
     }
 }
