@@ -36,6 +36,7 @@ public class HealthController : MonoBehaviour
 
     IEnumerator RespawnEnemy(GameObject objectToRespawn)
     {
+        //Destroy(gameObject);
         yield return new WaitForSeconds(2);
         spawner.SpawnObjects(objectToRespawn, 1);
         Destroy(gameObject);

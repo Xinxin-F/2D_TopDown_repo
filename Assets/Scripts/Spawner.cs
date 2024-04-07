@@ -56,11 +56,24 @@ public class Spawner : MonoBehaviour
             {
                  //Debug.Log("Spawning enemy at position: " + pos);
                 GameObject instance = Instantiate(objectToSpawn, pos, objectToSpawn.transform.rotation);
+                // if (instance.CompareTag("Enemy"))
+                // {   
+                //     EnemyMovements enemyMovements = instance.GetComponent<EnemyMovements>();
+                //     enemyMovements.target = GameObject.FindGameObjectWithTag("Player").transform;
+                // }
                 if (instance.CompareTag("Enemy"))
                 {   
-                    EnemyMovements enemyMovements = instance.GetComponent<EnemyMovements>();
-                    enemyMovements.target = GameObject.FindGameObjectWithTag("Player").transform;
-                }
+                    if(objectToSpawn.name.Equals("Enemy")) //MeleeEnemy should be replaced by the name of your melee enemy prefab
+                    {
+                        EnemyMovements enemyMovements = instance.GetComponent<EnemyMovements>();
+                        enemyMovements.target = GameObject.FindGameObjectWithTag("Player").transform;
+                    }
+                    else if(objectToSpawn.name.Equals("RangeEnemy")) //RangeEnemy should be replaced by the name of your range enemy prefab
+                    {
+                        RangeEnemyMovements rangeEnemyMovements = instance.GetComponent<RangeEnemyMovements>();
+                        rangeEnemyMovements.target = GameObject.FindGameObjectWithTag("Player").transform;
+                    }
+                }           
                 
             }
             if (tries <= 0)
