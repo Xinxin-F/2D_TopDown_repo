@@ -12,6 +12,8 @@ public class Ranking
         get { return results; }
     }
 
+    
+
     public void AddResult(GameResult result)
     {
         results.Add(result);

@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
 
     public int score;
    // public TextMeshProUGUI scoreText;
-    public SaveData data;
+    //public SaveData data;
     public bool GameOverCheck;
     public Ranking ranking = new Ranking();
 
@@ -56,12 +56,14 @@ public class LevelManager : MonoBehaviour
         GameObject.FindObjectOfType<ScoreUI>().UpdateScore(); //update in GameScene
     }
 
-    [System.Serializable] public class SaveData{
-        public int highscore;
-        public SaveData(int _hs){
-            highscore = _hs;
-        }
-    }
+    // [System.Serializable] public class SaveData{
+    //     public int highscore;
+    //     public SaveData(int _hs){
+    //         highscore = _hs;
+    //     }
+    // }
+
+    
 
     // public void TransitSecondScene(){
     //     SceneManager.LoadScene("SecondMap");
@@ -70,10 +72,14 @@ public class LevelManager : MonoBehaviour
     
     public void SaveScore()
     {
-        GameResult result = new GameResult { Score = score, GameTime = System.DateTime.Now };
+         Debug.Log("Score at the end of the game: " + score);
+        //GameResult result = new GameResult { Score = score, GameTime = System.DateTime.Now };
+        GameResult result = new GameResult { Score = score, GameTime = System.DateTime.Now.ToString() };
         ranking.AddResult(result);
         ranking.SaveToFile("ranking");
     }
+
+    
 
 
 
