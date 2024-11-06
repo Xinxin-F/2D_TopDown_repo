@@ -43,7 +43,7 @@ The objective is to defeat as many enemies as possible while managing the heroâ€
 
 
 ## Acknowledgments
-Developed by Xinxin Fan for the Completion of CPT306 Principles of Game Design Coursework 1 for 2023/2024 Term 2. 
+Developed by Xinxin Fan for the Completion of Game Design Coursework 1 for 2023/2024 Term 2. 
 - **AI tool used:** ChatGPT, AI Tool (Game Dev Bot) developed by Research Team of Dr. Hai-Ning Liang. 
 
 ## Additional Notes
